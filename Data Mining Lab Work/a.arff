@@ -1,0 +1,14 @@
+@relation 'employee-weka.filters.unsupervised.attribute.Add-Nunnamed-Clast-W1.0-weka.filters.unsupervised.attribute.Remove-R7-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.CfsSubsetEval -P 1 -E 1-Sweka.attributeSelection.BestFirst -D 1 -N 5-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0'
+
+@attribute name {x,y,z,a,b}
+@attribute exp numeric
+@attribute gender {male,female}
+@attribute phone numeric
+
+@data
+x,0.25,male,0.973691
+y,0.5,female,1
+z,0,male,0.777966
+a,1,female,0
+b,0.25,male,0.778004
+y,0.75,male,0.947634

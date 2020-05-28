@@ -1,0 +1,76 @@
+{
+	"flow_name" : "employeekg",
+	"steps" : [
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.ArffLoader",
+					"filePath" : "C:/Users/kavita/Desktop/Data Mining Lab Work/employee.arff",
+					"useRelativePath" : false
+				},
+				"name" : "ArffLoader"
+			},
+			"connections" : {
+				"dataSet" : [
+					"AttributeSelection"
+				]
+			},
+			"coordinates" : "42,24"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.supervised.attribute.AttributeSelection",
+					"options" : "-E \"weka.attributeSelection.CfsSubsetEval -P 1 -E 1\" -S \"weka.attributeSelection.BestFirst -D 1 -N 5\""
+				},
+				"name" : "AttributeSelection"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Normalize"
+				]
+			},
+			"coordinates" : "176,33"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.Normalize",
+					"options" : "-S 1.0 -T 0.0"
+				},
+				"name" : "Normalize"
+			},
+			"connections" : {
+				"dataSet" : [
+					"ArffSaver"
+				]
+			},
+			"coordinates" : "305,20"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Saver",
+			"properties" : {
+				"name" : "ArffSaver",
+				"relationNameForFilename" : true,
+				"saver" : {
+					"type" : "saver",
+					"class" : "weka.core.converters.ArffSaver",
+					"filePath" : "",
+					"dir" : "C:/Users/kavita/Desktop/Data Mining Lab Work",
+					"prefix" : ".arff",
+					"useRelativePath" : true,
+					"options" : "-decimal 6"
+				}
+			},
+			"connections" : {
+			},
+			"coordinates" : "406,56"
+		}
+	]
+}
